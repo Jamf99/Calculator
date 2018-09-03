@@ -1,6 +1,5 @@
 package numericSystem;
 
-import exceptions.IsNotIntegerException;
 
 public class RationalNumber<T extends Number> implements IRationalNumber<RationalNumber<Number>> {
 	
@@ -244,40 +243,22 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		}		
 	}
 
-	private T exactRoot(T numb) {
+	private T squeare(T numb) {
 		T number=null;
 		if(numerator instanceof Long) {
-			double n = numb.doubleValue();
-			n = Math.sqrt(n);
-			long withoutDecimal = (long) Math.round(n);
-			if(n == withoutDecimal) {
-				number=(T)Long.valueOf(withoutDecimal);
-			}
+			number=(T)Long.valueOf((long) Math.pow(numb.longValue(), 2));
 		}else if(numerator instanceof Integer) {
-			double n = numb.doubleValue();
-			n = Math.sqrt(n);
-			int withoutDecimal = (int) Math.round(n);
-			if(n == withoutDecimal) {
-				number=(T)Integer.valueOf(withoutDecimal);
-			}
+			number=(T)Integer.valueOf((int) Math.pow(numb.intValue(), 2));
 		}else if(numerator instanceof Short) {
-			double n = numb.doubleValue();
-			n = Math.sqrt(n);
-			short withoutDecimal = (short) Math.round(n);
-			if(n == withoutDecimal) {
-				number=(T)Short.valueOf(withoutDecimal);
-			}
+			number=(T)Short.valueOf((short) Math.pow(numb.shortValue(), 2));
 		}
 		return number;
 	}
 	
 	@Override
-	public void squaredRational() throws IsNotIntegerException{
-		numerator = exactRoot(numerator);
-		denominator = exactRoot(denominator);
-		if(numerator == null || denominator == null) {
-			throw new IsNotIntegerException();
-		}
+	public void squaredRational() {
+		numerator = squeare(numerator);
+		denominator = squeare(denominator);
 		simplifyRational();
 	}
 

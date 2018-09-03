@@ -1,6 +1,4 @@
 package view;
-
-import exceptions.IsNotIntegerException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -316,21 +314,15 @@ public class StartController {
     }
     
     @FXML
-    void squear(ActionEvent event) throws IsNotIntegerException{
+    void squear(ActionEvent event) {
     	try {
     		int numerator1 = Integer.parseInt(this.numerator1.getText());
     		int	denominator1 = Integer.parseInt(this.denominator1.getText());
     		RationalNumber<Number> rationalNumber1 = new RationalNumber<Number>(numerator1, denominator1);
     		rationalNumber1.squaredRational();
-    		operation.setText("R");
+    		operation.setText("Sq");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
     		resultDenominator.setText(rationalNumber1.getDenominator().intValue()+"");
-    	}catch(IsNotIntegerException e) {
-    		Alert message = new Alert(Alert.AlertType.ERROR);
-			message.setTitle("Error");
-			message.setContentText("Please enter a rational number that has exact root");
-			message.setHeaderText(e.getMessage());
-			message.show();
     	}catch(NumberFormatException s) {
     		Alert message = new Alert(Alert.AlertType.ERROR);
 			message.setTitle("Error");
