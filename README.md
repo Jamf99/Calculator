@@ -1,2 +1,2 @@
 # Calculator
-The methos simplify, inverse and squeare only works with one rational number
+The methods simplify, inverse and squeare only work with one rational number
