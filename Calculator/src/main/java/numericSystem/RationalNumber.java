@@ -1,5 +1,6 @@
 package numericSystem;
 
+import exceptions.DenominatorZeroException;
 
 public class RationalNumber<T extends Number> implements IRationalNumber<RationalNumber<Number>> {
 	
@@ -10,6 +11,22 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		super();
 		this.numerator = numerator;
 		this.denominator = denominator;
+	}
+	
+	public void verifyInvariant(T denominator) throws DenominatorZeroException {
+		if(denominator instanceof Long) {
+			if(denominator.longValue() == 0) {
+				throw new DenominatorZeroException();
+			}
+		}else if(denominator instanceof Integer) {
+			if(denominator.intValue() == 0) {
+				throw new DenominatorZeroException();
+			}
+		}else if(denominator instanceof Short) {
+			if(denominator.shortValue() == 0) {
+				throw new DenominatorZeroException();
+			}
+		}
 	}
 
 	@Override
@@ -240,7 +257,7 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 			this.numerator = denominator;
 			this.denominator = aux;
 			simplifyRational();
-		}		
+		}
 	}
 
 	private T squeare(T numb) {

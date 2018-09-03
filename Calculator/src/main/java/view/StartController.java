@@ -1,4 +1,5 @@
 package view;
+import exceptions.DenominatorZeroException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -280,6 +281,7 @@ public class StartController {
     		int numerator1 = Integer.parseInt(this.numerator1.getText());
     		int	denominator1 = Integer.parseInt(this.denominator1.getText());
     		RationalNumber<Number> rationalNumber1 = new RationalNumber<Number>(numerator1, denominator1);
+    		rationalNumber1.verifyInvariant(denominator1);
     		rationalNumber1.simplifyRational();
     		operation.setText("S");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -290,6 +292,12 @@ public class StartController {
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
 			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
+			message.show();
     	}
     }
     
@@ -299,6 +307,7 @@ public class StartController {
     		int numerator1 = Integer.parseInt(this.numerator1.getText());
     		int	denominator1 = Integer.parseInt(this.denominator1.getText());
     		RationalNumber<Number> rationalNumber1 = new RationalNumber<Number>(numerator1, denominator1);
+    		rationalNumber1.verifyInvariant(numerator1);
     		rationalNumber1.rationalInverse();
     		operation.setText("I");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -308,6 +317,12 @@ public class StartController {
 			message.setTitle("Error");
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
+			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
 			message.show();
     	}
     		
@@ -319,6 +334,7 @@ public class StartController {
     		int numerator1 = Integer.parseInt(this.numerator1.getText());
     		int	denominator1 = Integer.parseInt(this.denominator1.getText());
     		RationalNumber<Number> rationalNumber1 = new RationalNumber<Number>(numerator1, denominator1);
+    		rationalNumber1.verifyInvariant(denominator1);
     		rationalNumber1.squaredRational();
     		operation.setText("Sq");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -328,6 +344,12 @@ public class StartController {
 			message.setTitle("Error");
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
+			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
 			message.show();
     	}
     }
@@ -341,6 +363,8 @@ public class StartController {
     		int numerator2 = Integer.parseInt(this.numerator2.getText());
     		int denominator2 = Integer.parseInt(this.denominator2.getText());
     		RationalNumber<Number> rationalNumber2 = new RationalNumber<Number>(numerator2, denominator2);
+    		rationalNumber1.verifyInvariant(denominator1);
+    		rationalNumber2.verifyInvariant(denominator2);
     		rationalNumber1.multiplyRational(rationalNumber2);
     		operation.setText("x");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -350,6 +374,12 @@ public class StartController {
 			message.setTitle("Error");
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
+			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
 			message.show();
     	}
     }
@@ -363,6 +393,8 @@ public class StartController {
     		int numerator2 = Integer.parseInt(this.numerator2.getText());
     		int denominator2 = Integer.parseInt(this.denominator2.getText());
     		RationalNumber<Number> rationalNumber2 = new RationalNumber<Number>(numerator2, denominator2);
+    		rationalNumber1.verifyInvariant(denominator1);
+    		rationalNumber2.verifyInvariant(denominator2);
     		rationalNumber1.substractRational(rationalNumber2);
     		operation.setText("-");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -372,6 +404,12 @@ public class StartController {
 			message.setTitle("Error");
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
+			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
 			message.show();
     	}
     }
@@ -385,6 +423,8 @@ public class StartController {
     		int numerator2 = Integer.parseInt(this.numerator2.getText());
     		int denominator2 = Integer.parseInt(this.denominator2.getText());
     		RationalNumber<Number> rationalNumber2 = new RationalNumber<Number>(numerator2, denominator2);
+    		rationalNumber1.verifyInvariant(denominator1);
+    		rationalNumber2.verifyInvariant(denominator2);
     		rationalNumber1.addRational(rationalNumber2);
     		operation.setText("+");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -394,6 +434,12 @@ public class StartController {
 			message.setTitle("Error");
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
+			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
 			message.show();
     	}
     }
@@ -407,6 +453,8 @@ public class StartController {
     		int numerator2 = Integer.parseInt(this.numerator2.getText());
     		int denominator2 = Integer.parseInt(this.denominator2.getText());
     		RationalNumber<Number> rationalNumber2 = new RationalNumber<Number>(numerator2, denominator2);
+    		rationalNumber1.verifyInvariant(denominator1);
+    		rationalNumber2.verifyInvariant(denominator2);
     		rationalNumber1.divideRational(rationalNumber2);
     		operation.setText("/");
     		resultNumerator.setText(rationalNumber1.getNumerator().intValue()+"");
@@ -416,6 +464,12 @@ public class StartController {
 			message.setTitle("Error");
 			message.setContentText("Please fill in all fields");
 			message.setHeaderText("Some fields are empty");
+			message.show();
+    	}catch(DenominatorZeroException s) {
+    		Alert message = new Alert(Alert.AlertType.ERROR);
+			message.setTitle("Error");
+			message.setContentText("Is not posible divide by zero");
+			message.setHeaderText(s.getMessage());
 			message.show();
     	}
     }
