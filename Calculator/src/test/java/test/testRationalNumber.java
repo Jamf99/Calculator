@@ -12,6 +12,7 @@ public class testRationalNumber extends TestCase {
 	RationalNumber<Number> c;
 	RationalNumber<Number> d;
 	RationalNumber<Number> e;
+	RationalNumber<Number> f;
 	ArrayList<Integer> arra = new ArrayList<>();
 	String cc;
 
@@ -21,6 +22,7 @@ public class testRationalNumber extends TestCase {
 		c = new RationalNumber<Number>(-13, 23);
 		d = new RationalNumber<Number>(-100, 28);
 		e = new RationalNumber<Number>(0, 1);
+		f = new RationalNumber<Number>(9, 4);
 	}
 
 	public void testRationalDivision() {
@@ -35,11 +37,9 @@ public class testRationalNumber extends TestCase {
 
 	public void testSquaredRational() throws IsNotIntegerException {
 		setUpEscenario1();
-		a.squaredRational();
-		b.squaredRational();
+		f.squaredRational();
 		boolean prueba = true;
-		prueba = prueba && (a.getNumerator().intValue() == 1 && a.getDenominator().intValue() == 4);
-		prueba = prueba && (b.getNumerator().intValue() == 9 && b.getDenominator().intValue() == 4);
+		prueba = prueba && (f.getNumerator().intValue() == 3 && f.getDenominator().intValue() == 2);
 		assertTrue(prueba);
 	}
 

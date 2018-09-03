@@ -193,24 +193,6 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		return number;
 	}
 	
-	private boolean numeratorPositiveDenominatorNegative(T num,T den) {
-		boolean number=false;
-		if(numerator instanceof Long) {
-			if(num.longValue() > 0 && den.longValue() < 0) {
-				number = true;
-			}
-		}else if(numerator instanceof Integer) {
-			if(num.intValue() > 0 && den.intValue() < 0) {
-				number = true;
-			}
-		}else if(numerator instanceof Short) {
-			if(num.shortValue() > 0 && den.shortValue() < 0) {
-				number = true;
-			}
-		}
-		return number;
-	}
-	
 	private T transform(T numb) {
 		T number=null;
 		if(numerator instanceof Long) {
@@ -229,9 +211,6 @@ public class RationalNumber<T extends Number> implements IRationalNumber<Rationa
 		numerator = divideToMcd(numerator, mcd);
 		denominator = divideToMcd(denominator, mcd);
 		if(areNegative(numerator, denominator)) {
-			numerator = transform(numerator);
-			denominator = transform(denominator);
-		}else if(numeratorPositiveDenominatorNegative(numerator, denominator)) {
 			numerator = transform(numerator);
 			denominator = transform(denominator);
 		}
